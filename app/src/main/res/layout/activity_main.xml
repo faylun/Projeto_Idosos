@@ -1,37 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/colorBackground">
 
+    <!-- Menu superior -->
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorDarkBrown"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Título "FOTOS" -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FOTOS"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:paddingStart="16dp" />
+
+        <!-- Botões de categoria -->
+        <Button
+            android:id="@+id/btnLandscape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paisagem"
+            android:layout_marginStart="8dp" />
+
+        <Button
+            android:id="@+id/btnObjects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Objetos" />
+
+        <Button
+            android:id="@+id/btnPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pessoas"
+            android:layout_marginStart="8dp" />
+
+        <Button
+            android:id="@+id/btnBuildings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Construções"
+            android:layout_marginStart="8dp" />
+
+        <Button
+            android:id="@+id/btnAnimals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animais"
+            android:layout_marginStart="8dp" />
+
+        <Button
+            android:id="@+id/btnOthers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outros"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- RecyclerView para exibir as fotos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:padding="16dp" />
+
+    <!-- Botão para capturar foto -->
+    <Button
+        android:id="@+id/btnCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Capturar Foto"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:textSize="18sp"
+        android:minHeight="48dp"
+        android:minWidth="120dp"
+        android:paddingVertical="12dp"
+        android:background="@color/colorButtonBackground"
+        android:textColor="@android:color/white" />
+
+    <!-- Texto de álbum vazio -->
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/emptyAlbumTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Álbum de Fotografias"
+        android:text="Álbum vazio"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
         android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:textColor="@android:color/black" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
-        android:src="@android:drawable/ic_input_add"
-        android:contentDescription="Adicionar Nova Foto"
-        android:scaleType="center"
-        android:tint="@android:color/white"
-        android:backgroundTint="@color/design_default_color_primary" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
