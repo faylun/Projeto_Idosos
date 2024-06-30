@@ -1,10 +1,12 @@
 package com.example.m3_projeto_idosos;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -25,21 +27,26 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_TAKE_PHOTO = 1;
+    private DatabaseHelper dbHelper;
 
     private String currentPhotoPath;
     private ArrayList<PhotoData> photoDataList = new ArrayList<>();
     private PhotoAdapter photoAdapter;
     private RecyclerView recyclerView;
     private TextView emptyAlbumTextView;
+    private boolean isFirstRun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dbHelper = new DatabaseHelper(this);
 
         Button btnCapture = findViewById(R.id.btnCapture);
         recyclerView = findViewById(R.id.recyclerView);
@@ -53,11 +60,14 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("PHOTO_DATA", photoData);
                 startActivity(intent);
             }
-
         });
         recyclerView.setAdapter(photoAdapter);
 
+        // Recuperar fotos do banco de dados apenas se não for a primeira execução
+        loadPhotosFromDatabase();
         updateAlbumVisibility();
+       // dbHelper.clearAlbum();
+
 
         btnCapture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,14 +111,21 @@ public class MainActivity extends AppCompatActivity {
     private void updatePhotoList(String photoPath) {
         PhotoData photoData = new PhotoData();
         photoData.setPhotoUri(Uri.fromFile(new File(photoPath)));
-        photoData.setLatitude(0.0 );
-        photoData.setLongitude( 0.0 );
+        photoData.setLatitude(0.0);
+        photoData.setLongitude(0.0);
         photoData.setTimestamp(new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()));
         photoData.setDescription("Adicione uma descrição");
 
+        dbHelper.insertPhoto(photoData);
         photoDataList.add(photoData);
 
         Toast.makeText(this, "Foto capturada e adicionada ao álbum", Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadPhotosFromDatabase() {
+        List<PhotoData> photosFromDb = dbHelper.getAllPhotos();
+        photoDataList.addAll(photosFromDb);
+        refreshPhotoList();
     }
 
     private File createImageFile() throws IOException {
