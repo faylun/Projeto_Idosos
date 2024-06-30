@@ -2,4 +2,5 @@
     <string name="app_name">M3_Projeto_Idosos</string>
     <string name="photo">Photo</string>
     <string name="photo_title">Photo Title</string>
+    <string name="photo_description">Photo Description</string>
 </resources>

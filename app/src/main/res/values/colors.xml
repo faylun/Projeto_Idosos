@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FF9800</color> <!-- Laranja -->
+    <color name="colorAccent">#795548</color> <!-- Marrom -->
+    <color name="colorBackground">#FFFFFF</color> <!-- Fundo branco -->
+    <color name="colorTextPrimary">#000000</color> <!-- Texto principal em preto -->
+    <color name="colorButtonBackground">#8d4925</color> <!-- Fundo do botão laranja -->
+    <color name="colorButtonText">#FFFFFF</color> <!-- Texto do botão em branco -->
+    <color name="colorDarkBrown">#5d2417</color> <!-- Laranja -->
+    <color name="colorBrown">#795548</color> <!-- Marrom -->
+    <color name="beige">#ede6db</color>
+    <color name="colorPolaroidBackground">#F5F5F5</color> <!-- Fundo da "polaroid" -->
 </resources>
