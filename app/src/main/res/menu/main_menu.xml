@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_filter_all"
+        android:title="Todas as Fotos" />
+    <item
+        android:id="@+id/menu_filter_paisagem"
+        android:title="Paisagem" />
+    <item
+        android:id="@+id/menu_filter_objetos"
+        android:title="Objetos" />
+    <item
+        android:id="@+id/menu_filter_pessoas"
+        android:title="Pessoas" />
+    <item
+        android:id="@+id/menu_filter_construcoes"
+        android:title="Construções" />
+    <item
+        android:id="@+id/menu_filter_animais"
+        android:title="Animais" />
+    <item
+        android:id="@+id/menu_filter_outros"
+        android:title="Outros" />
+</menu>

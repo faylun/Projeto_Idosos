@@ -34,6 +34,16 @@
             android:text="Descrição da Foto"
             android:background="@color/colorBackground"
             android:layout_marginBottom="8dp"/>
+        <TextView
+            android:id="@+id/categoryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextPrimary"
+            android:padding="8dp"
+            android:text="Categoria"
+            android:background="@color/colorBackground"
+            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:id="@+id/locationTextView"

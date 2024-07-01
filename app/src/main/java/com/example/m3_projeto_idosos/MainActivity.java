@@ -1,12 +1,9 @@
 package com.example.m3_projeto_idosos;
-
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -16,19 +13,21 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_TAKE_PHOTO = 1;
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHelper = new DatabaseHelper(this);
-
         Button btnCapture = findViewById(R.id.btnCapture);
         recyclerView = findViewById(R.id.recyclerView);
         emptyAlbumTextView = findViewById(R.id.emptyAlbumTextView);
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         // Recuperar fotos do banco de dados apenas se não for a primeira execução
         loadPhotosFromDatabase();
         updateAlbumVisibility();
-       // dbHelper.clearAlbum();
+        //dbHelper.clearAlbum();
 
 
         btnCapture.setOnClickListener(new View.OnClickListener() {
@@ -102,24 +100,46 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            updatePhotoList(currentPhotoPath);
-            updateAlbumVisibility();
-            refreshPhotoList();
+            showCategorySelectionDialog(currentPhotoPath);
+            //updateAlbumVisibility();
+           // refreshPhotoList();
         }
     }
 
-    private void updatePhotoList(String photoPath) {
+    private void showCategorySelectionDialog(final String photoPath) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Selecione a categoria");
+
+        final String[] categories = {"Paisagem", "Objetos", "Pessoas", "Construções", "Animais", "Outros"};
+
+        builder.setItems(categories, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String selectedCategory = categories[which];
+                updatePhotoList(photoPath, selectedCategory);
+            }
+        });
+
+        builder.show();
+    }
+
+    private void updatePhotoList(String photoPath, String category) {
         PhotoData photoData = new PhotoData();
         photoData.setPhotoUri(Uri.fromFile(new File(photoPath)));
         photoData.setLatitude(0.0);
         photoData.setLongitude(0.0);
         photoData.setTimestamp(new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()));
         photoData.setDescription("Adicione uma descrição");
+        photoData.setCategory(category); // Defina a categoria selecionada
 
         dbHelper.insertPhoto(photoData);
         photoDataList.add(photoData);
 
+        updateAlbumVisibility();
+        refreshPhotoList();
+
         Toast.makeText(this, "Foto capturada e adicionada ao álbum", Toast.LENGTH_SHORT).show();
+        refreshPhotoList();
     }
 
     private void loadPhotosFromDatabase() {
@@ -148,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshPhotoList() {
+        Collections.sort(photoDataList, (photo1, photo2) -> photo2.getTimestamp().compareTo(photo1.getTimestamp()));
         photoAdapter.notifyDataSetChanged();
     }
 }

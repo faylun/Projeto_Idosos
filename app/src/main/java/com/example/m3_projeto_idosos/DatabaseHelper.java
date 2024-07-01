@@ -1,5 +1,6 @@
 package com.example.m3_projeto_idosos;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -105,5 +106,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_PHOTOS);
         db.close();
+    }
+
+
+    // Método para filtrar fotos por categoria
+    @SuppressLint("Range")
+    public List<PhotoData> getPhotosByCategory(String category) {
+        List<PhotoData> photoDataList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {
+                COLUMN_ID, COLUMN_URI, COLUMN_LATITUDE, COLUMN_LONGITUDE,
+                COLUMN_TIMESTAMP, COLUMN_DESCRIPTION, COLUMN_CATEGORY
+        };
+        String selection = COLUMN_CATEGORY + " = ?";
+        String[] selectionArgs = {category};
+        Cursor cursor = db.query(TABLE_PHOTOS, columns, selection, selectionArgs, null, null, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                PhotoData photoData = new PhotoData();
+                photoData.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+                photoData.setPhotoUri(Uri.parse(cursor.getString(cursor.getColumnIndex(COLUMN_URI))));
+                photoData.setLatitude(cursor.getDouble(cursor.getColumnIndex(COLUMN_LATITUDE)));
+                photoData.setLongitude(cursor.getDouble(cursor.getColumnIndex(COLUMN_LONGITUDE)));
+                photoData.setTimestamp(cursor.getString(cursor.getColumnIndex(COLUMN_TIMESTAMP)));
+                photoData.setDescription(cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)));
+                photoData.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY)));
+
+                photoDataList.add(photoData);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return photoDataList;
     }
 }

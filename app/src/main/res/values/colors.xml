@@ -10,4 +10,7 @@
     <color name="colorBrown">#795548</color> <!-- Marrom -->
     <color name="beige">#ede6db</color>
     <color name="colorPolaroidBackground">#F5F5F5</color> <!-- Fundo da "polaroid" -->
+    <color name="colorLightGray">#E0E0E0</color> <!-- Cinza claro -->
+    <color name="colorTextSecondary">#757575</color> <!-- Texto secundário em cinza -->
+    <color name="colorDivider">#BDBDBD</color> <!-- Divisores em cinza -->
 </resources>
