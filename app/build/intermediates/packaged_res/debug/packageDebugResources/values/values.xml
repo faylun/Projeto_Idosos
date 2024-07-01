@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="beige">#ede6db</color>
+    <color name="colorAccent">#795548</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBrown">#795548</color>
+    <color name="colorButtonBackground">#8d4925</color>
+    <color name="colorButtonText">#FFFFFF</color>
+    <color name="colorDarkBrown">#5d2417</color>
+    <color name="colorPolaroidBackground">#F5F5F5</color>
+    <color name="colorPrimary">#FF9800</color>
+    <color name="colorTextPrimary">#000000</color>
+    <string name="app_name">M3_Projeto_Idosos</string>
+    <string name="photo">Photo</string>
+    <string name="photo_description">Photo Description</string>
+    <string name="photo_title">Photo Title</string>
+    <style name="Base.Theme.M3_Projeto_Idosos" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.M3_Projeto_Idosos" parent="Base.Theme.M3_Projeto_Idosos"/>
+</resources>

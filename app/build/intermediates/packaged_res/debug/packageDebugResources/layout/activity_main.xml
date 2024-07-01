@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <!-- Menu superior -->
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:orientation="horizontal"
+        android:background="@color/colorDarkBrown">
+
+        <!-- Título "FOTOS" -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="FOTOS"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:gravity="center_vertical|start"
+            android:paddingStart="16dp" />
+
+<!--        &lt;!&ndash; Ícone de lupa &ndash;&gt;-->
+<!--        <ImageView-->
+<!--            android:id="@+id/searchImageView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:src="@drawable/ic_search"-->
+<!--            android:padding="16dp"-->
+<!--            android:contentDescription="Buscar"-->
+<!--            android:tint="@color/colorBrown" />-->
+    </LinearLayout>
+
+    <!-- RecyclerView para exibir as fotos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:padding="16dp" />
+
+    <!-- Botão para capturar foto -->
+    <Button
+        android:id="@+id/btnCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Capturar Foto"
+        android:layout_alignParentBottom="true"
+        android:textSize="18sp"
+        android:minHeight="48dp"
+        android:minWidth="120dp"
+        android:paddingVertical="12dp"
+        android:layout_margin="16dp"
+        android:background="@color/colorButtonBackground"
+        android:textColor="@android:color/white" />
+
+    <!-- Texto de álbum vazio -->
+    <TextView
+        android:id="@+id/emptyAlbumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Álbum vazio"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:textSize="24sp"
+        android:textColor="@android:color/black" />
+
+</RelativeLayout>
