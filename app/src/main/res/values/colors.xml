@@ -13,4 +13,7 @@
     <color name="colorLightGray">#E0E0E0</color> <!-- Cinza claro -->
     <color name="colorTextSecondary">#757575</color> <!-- Texto secundário em cinza -->
     <color name="colorDivider">#BDBDBD</color> <!-- Divisores em cinza -->
+    <color name="colorGray">#808080</color>
+
+    <color name="colorAccentPressed">#E91E63</color>
 </resources>

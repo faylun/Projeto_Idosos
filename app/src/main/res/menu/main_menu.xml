@@ -1,23 +1,33 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_filter_all"
-        android:title="Todas as Fotos" />
-    <item
-        android:id="@+id/menu_filter_paisagem"
-        android:title="Paisagem" />
-    <item
-        android:id="@+id/menu_filter_objetos"
-        android:title="Objetos" />
-    <item
-        android:id="@+id/menu_filter_pessoas"
-        android:title="Pessoas" />
-    <item
-        android:id="@+id/menu_filter_construcoes"
-        android:title="Construções" />
-    <item
-        android:id="@+id/menu_filter_animais"
-        android:title="Animais" />
-    <item
-        android:id="@+id/menu_filter_outros"
-        android:title="Outros" />
+        android:id="@+id/action_filter"
+        android:title="Filtrar"
+        android:icon="@drawable/ic_menu"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/filter_all"
+                android:title="Sem filtro"/>
+            <item
+                android:id="@+id/filter_landscape"
+                android:title="Paisagem"/>
+            <item
+                android:id="@+id/filter_objects"
+                android:title="Objetos"/>
+            <item
+                android:id="@+id/filter_people"
+                android:title="Pessoas"/>
+            <item
+                android:id="@+id/filter_buildings"
+                android:title="Construções"/>
+            <item
+                android:id="@+id/filter_animals"
+                android:title="Animais"/>
+            <item
+                android:id="@+id/filter_others"
+                android:title="Outros"/>
+        </menu>
+    </item>
 </menu>

@@ -5,48 +5,21 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorDarkBrown"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
-
-        <!-- Título "FOTOS" -->
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FOTOS"
-            android:textSize="20sp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
-
-        <!-- Ícone de menu -->
-        <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_menu"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Menu"
-            android:padding="5dp"
-            app:tint="@android:color/white" />
-
-
-    </RelativeLayout>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <!-- RecyclerView para exibir as fotos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@id/toolbar"
+        android:layout_above="@id/btnCapture"
         android:padding="16dp"
         android:clipToPadding="false" />
 

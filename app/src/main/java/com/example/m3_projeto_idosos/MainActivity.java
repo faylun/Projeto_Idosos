@@ -1,4 +1,5 @@
 package com.example.m3_projeto_idosos;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -6,12 +7,16 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private PhotoAdapter photoAdapter;
     private RecyclerView recyclerView;
     private TextView emptyAlbumTextView;
-    private boolean isFirstRun;
+    private String currentFilter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnCapture = findViewById(R.id.btnCapture);
         recyclerView = findViewById(R.id.recyclerView);
         emptyAlbumTextView = findViewById(R.id.emptyAlbumTextView);
+
+        setSupportActionBar(findViewById(R.id.toolbar));
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         photoAdapter = new PhotoAdapter(photoDataList, new PhotoAdapter.OnItemClickListener() {
@@ -61,18 +68,10 @@ public class MainActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(photoAdapter);
 
-        // Recuperar fotos do banco de dados apenas se não for a primeira execução
         loadPhotosFromDatabase();
         updateAlbumVisibility();
-        //dbHelper.clearAlbum();
 
-
-        btnCapture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dispatchTakePictureIntent();
-            }
-        });
+        btnCapture.setOnClickListener(v -> dispatchTakePictureIntent());
     }
 
     private void dispatchTakePictureIntent() {
@@ -101,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             showCategorySelectionDialog(currentPhotoPath);
-            //updateAlbumVisibility();
-           // refreshPhotoList();
         }
     }
 
@@ -112,12 +109,9 @@ public class MainActivity extends AppCompatActivity {
 
         final String[] categories = {"Paisagem", "Objetos", "Pessoas", "Construções", "Animais", "Outros"};
 
-        builder.setItems(categories, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String selectedCategory = categories[which];
-                updatePhotoList(photoPath, selectedCategory);
-            }
+        builder.setItems(categories, (dialog, which) -> {
+            String selectedCategory = categories[which];
+            updatePhotoList(photoPath, selectedCategory);
         });
 
         builder.show();
@@ -130,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         photoData.setLongitude(0.0);
         photoData.setTimestamp(new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()));
         photoData.setDescription("Adicione uma descrição");
-        photoData.setCategory(category); // Defina a categoria selecionada
+        photoData.setCategory(category);
 
         dbHelper.insertPhoto(photoData);
         photoDataList.add(photoData);
@@ -139,11 +133,11 @@ public class MainActivity extends AppCompatActivity {
         refreshPhotoList();
 
         Toast.makeText(this, "Foto capturada e adicionada ao álbum", Toast.LENGTH_SHORT).show();
-        refreshPhotoList();
     }
 
     private void loadPhotosFromDatabase() {
         List<PhotoData> photosFromDb = dbHelper.getAllPhotos();
+        photoDataList.clear(); // Limpa a lista antes de adicionar novos dados
         photoDataList.addAll(photosFromDb);
         refreshPhotoList();
     }
@@ -170,5 +164,48 @@ public class MainActivity extends AppCompatActivity {
     private void refreshPhotoList() {
         Collections.sort(photoDataList, (photo1, photo2) -> photo2.getTimestamp().compareTo(photo1.getTimestamp()));
         photoAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.filter_all) {
+            currentFilter = null;
+            loadPhotosFromDatabase();
+        } else if (id == R.id.filter_landscape) {
+            currentFilter = "Paisagem";
+            filterPhotosByCategory(currentFilter);
+        } else if (id == R.id.filter_objects) {
+            currentFilter = "Objetos";
+            filterPhotosByCategory(currentFilter);
+        } else if (id == R.id.filter_people) {
+            currentFilter = "Pessoas";
+            filterPhotosByCategory(currentFilter);
+        } else if (id == R.id.filter_buildings) {
+            currentFilter = "Construções";
+            filterPhotosByCategory(currentFilter);
+        } else if (id == R.id.filter_animals) {
+            currentFilter = "Animais";
+            filterPhotosByCategory(currentFilter);
+        } else if (id == R.id.filter_others) {
+            currentFilter = "Outros";
+            filterPhotosByCategory(currentFilter);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void filterPhotosByCategory(String category) {
+        List<PhotoData> photosFromDb = dbHelper.getPhotosByCategory(category);
+        photoDataList.clear();
+        photoDataList.addAll(photosFromDb);
+        refreshPhotoList();
     }
 }
