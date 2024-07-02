@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_filter"
+        android:title="Filtrar"
+        android:icon="@drawable/ic_menu"
+        app:showAsAction="always"
+        app:actionViewClass="android.widget.PopupMenu"
+        android:popupTheme="@style/PopupMenuTheme">
+        <menu>
+            <item
+                android:id="@+id/filter_all"
+                android:title="Sem filtro"/>
+            <item
+                android:id="@+id/filter_landscape"
+                android:title="Paisagem"/>
+            <item
+                android:id="@+id/filter_objects"
+                android:title="Objetos"/>
+            <item
+                android:id="@+id/filter_people"
+                android:title="Pessoas"/>
+            <item
+                android:id="@+id/filter_buildings"
+                android:title="Construções"/>
+            <item
+                android:id="@+id/filter_animals"
+                android:title="Animais"/>
+            <item
+                android:id="@+id/filter_others"
+                android:title="Outros"/>
+        </menu>
+    </item>
+</menu>

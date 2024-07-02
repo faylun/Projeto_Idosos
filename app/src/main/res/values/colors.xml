@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF9800</color> <!-- Laranja -->
-    <color name="colorAccent">#795548</color> <!-- Marrom -->
-    <color name="colorBackground">#FFFFFF</color> <!-- Fundo branco -->
-    <color name="colorTextPrimary">#000000</color> <!-- Texto principal em preto -->
-    <color name="colorButtonBackground">#8d4925</color> <!-- Fundo do botão laranja -->
-    <color name="colorButtonText">#FFFFFF</color> <!-- Texto do botão em branco -->
-    <color name="colorDarkBrown">#5d2417</color> <!-- Laranja -->
-    <color name="colorBrown">#795548</color> <!-- Marrom -->
-    <color name="beige">#ede6db</color>
-    <color name="colorPolaroidBackground">#F5F5F5</color> <!-- Fundo da "polaroid" -->
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryVariant">#3700B3</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorSecondaryVariant">#018786</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#000000</color>
+    <color name="colorError">#B00020</color>
+    <color name="colorOnError">#FFFFFF</color>
+
+    <!-- Definições de cores adicionais -->
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorButtonBackground">#6200EE</color>
+    <color name="colorButtonText">#FFFFFF</color>
+    <color name="colorDarkBrown">#4E342E</color>
+    <color name="colorBrown">#795548</color>
+    <color name="beige">#EFEFE3</color>
+    <color name="colorPolaroidBackground">#F5F5F5</color>
+    <color name="colorHintText">#AAAAAA</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorGray">#808080</color>
 </resources>

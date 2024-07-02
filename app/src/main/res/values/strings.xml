@@ -3,4 +3,10 @@
     <string name="photo">Photo</string>
     <string name="photo_title">Photo Title</string>
     <string name="photo_description">Photo Description</string>
+    <string name="back_icon_description">Voltar</string>
+    <string name="photo_details">Detalhes da Foto</string>
+    <string name="photo_description_placeholder">Descrição da Foto</string>
+    <string name="photo_category_placeholder">Categoria</string>
+    <string name="photo_location_placeholder">Latitude, Longitude</string>
+    <string name="photo_timestamp_placeholder">Data e Hora</string>
 </resources>

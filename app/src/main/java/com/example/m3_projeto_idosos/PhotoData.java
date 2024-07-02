@@ -111,4 +111,14 @@ public class PhotoData implements Parcelable {
         dest.writeString(description);
         dest.writeString(category);
     }
+
+    public void setLocation(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+
+    public String getLocationAsString() {
+        return "(" + latitude + ", " + longitude + ")";
+    }
 }

@@ -1,49 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <!-- Menu superior -->
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="160px"
-        android:orientation="horizontal"
-        android:background="@color/colorDarkBrown">
+        android:layout_height="wrap_content"
+        android:background="@color/colorDarkBrown"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Fotos"
+        app:titleTextColor="@android:color/white" />
 
-        <!-- Título "FOTOS" -->
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="FOTOS"
-            android:textSize="20sp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:gravity="center_vertical|start"
-            android:paddingStart="16dp" />
-
-<!--        &lt;!&ndash; Ícone de lupa &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:id="@+id/searchImageView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:src="@drawable/ic_search"-->
-<!--            android:padding="16dp"-->
-<!--            android:contentDescription="Buscar"-->
-<!--            android:tint="@color/colorBrown" />-->
-    </LinearLayout>
 
     <!-- RecyclerView para exibir as fotos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@id/toolbar"
-        android:padding="16dp" />
+        android:layout_above="@id/btnCapture"
+        android:padding="16dp"
+        android:clipToPadding="false" />
 
     <!-- Botão para capturar foto -->
     <Button
@@ -57,7 +38,7 @@
         android:minWidth="120dp"
         android:paddingVertical="12dp"
         android:layout_margin="16dp"
-        android:background="@color/colorButtonBackground"
+        android:backgroundTint="@color/colorDarkBrown"
         android:textColor="@android:color/white" />
 
     <!-- Texto de álbum vazio -->

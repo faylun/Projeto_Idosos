@@ -47,6 +47,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         return photoDataList.size();
     }
 
+    public void updateData(List<PhotoData> newData) {
+        photoDataList = newData;
+        notifyDataSetChanged();
+    }
+
     public static class PhotoViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
