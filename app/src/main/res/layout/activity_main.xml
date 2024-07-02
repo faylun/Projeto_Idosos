@@ -11,8 +11,10 @@
         android:layout_height="wrap_content"
         android:background="@color/colorDarkBrown"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:textStyle="bold"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Fotos"
+        app:title="FOTOS"
+
         app:titleTextColor="@android:color/white" />
 
 
@@ -24,6 +26,7 @@
         android:layout_below="@id/toolbar"
         android:layout_above="@id/btnCapture"
         android:padding="16dp"
+
         android:clipToPadding="false" />
 
     <!-- Botão para capturar foto -->
@@ -31,14 +34,15 @@
         android:id="@+id/btnCapture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Capturar Foto"
+        android:text="CAPTURAR FOTO"
+        android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:textSize="18sp"
         android:minHeight="48dp"
         android:minWidth="120dp"
         android:paddingVertical="12dp"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/colorDarkBrown"
+        android:backgroundTint="@color/colorBrown"
         android:textColor="@android:color/white" />
 
     <!-- Texto de álbum vazio -->

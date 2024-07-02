@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar));
 
+       //dbHelper.clearAlbum();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         photoAdapter = new PhotoAdapter(photoDataList, new PhotoAdapter.OnItemClickListener() {
             @Override
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         photoData.setTimestamp(dateTime);
 
         // Capturar o valor da descrição da EditText
-        EditText descEditText = findViewById(R.id.descriptionTextView);
+        EditText descEditText = findViewById(R.id.descriptionEditText);
         String descriptionText = "";
         if (descEditText != null) {
             descriptionText = descEditText.getText().toString();

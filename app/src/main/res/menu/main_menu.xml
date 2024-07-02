@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/action_filter"
         android:title="Filtrar"
@@ -8,28 +8,49 @@
         app:showAsAction="always"
         app:actionViewClass="android.widget.PopupMenu"
         android:popupTheme="@style/PopupMenuTheme">
+
         <menu>
             <item
                 android:id="@+id/filter_all"
-                android:title="Sem filtro"/>
+                android:title="Sem Filtro"
+                app:actionLayout="@layout/custom_menu_item"
+                app:showAsAction="never" />
+
             <item
                 android:id="@+id/filter_landscape"
-                android:title="Paisagem"/>
+                android:title="Paisagem"
+                app:actionLayout="@layout/custom_menu_item"
+                app:showAsAction="never" />
+
             <item
                 android:id="@+id/filter_objects"
-                android:title="Objetos"/>
+                android:title="Objetos"
+                app:actionLayout="@layout/custom_menu_item"
+                app:showAsAction="never" />
+
             <item
                 android:id="@+id/filter_people"
-                android:title="Pessoas"/>
+                android:title="Pessoas"
+                app:actionLayout="@layout/custom_menu_item"
+                app:showAsAction="never" />
+
             <item
                 android:id="@+id/filter_buildings"
-                android:title="Construções"/>
+                android:title="Construções"
+                app:actionLayout="@layout/custom_menu_item"
+                app:showAsAction="never" />
+
             <item
                 android:id="@+id/filter_animals"
-                android:title="Animais"/>
+                android:title="Animais"
+                app:actionLayout="@layout/custom_menu_item"
+                app:showAsAction="never" />
+
             <item
                 android:id="@+id/filter_others"
-                android:title="Outros"/>
+                android:title="Outros"
+                app:actionLayout="@layout/custom_menu_item"
+                app:showAsAction="never" />
         </menu>
     </item>
 </menu>

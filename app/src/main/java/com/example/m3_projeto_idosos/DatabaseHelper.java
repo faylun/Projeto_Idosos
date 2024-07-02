@@ -139,4 +139,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return photoDataList;
     }
+    public void updatePhotoDescription(PhotoData photoData) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DESCRIPTION, photoData.getDescription());
+
+        db.update(TABLE_PHOTOS, values, COLUMN_ID + " = ?", new String[]{String.valueOf(photoData.getId())});
+        db.close();
+    }
 }

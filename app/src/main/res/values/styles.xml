@@ -5,11 +5,27 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <!-- Light theme for popup menu -->
     <style name="PopupMenuTheme" parent="Theme.AppCompat.Light">
         <item name="android:popupBackground">@android:color/white</item>
-        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColor">@color/colorBackground</item> <!-- Cor do texto -->
+        <item name="android:textSize">18sp</item> <!-- Tamanho do texto -->
     </style>
+    <!-- Tema da barra de ação -->
+    <style name="MyActionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+    <!-- Estilos específicos para a barra de ação -->
+    <item name="android:textColor">@color/colorBackground</item> <!-- Cor do texto -->
+    <item name="android:textSize">18sp</item> <!-- Tamanho do texto -->
+    </style>
+
+    <!-- Estilo do texto do título da barra de ação -->
+    <style name="MyActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FFFFFF</item> <!-- Cor do texto -->
+        <item name="android:textSize">18sp</item> <!-- Tamanho do texto -->
+    </style>
+
 </resources>

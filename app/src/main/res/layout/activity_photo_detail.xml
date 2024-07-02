@@ -39,27 +39,17 @@
             android:layout_marginEnd="15dp"
             android:text="@string/photo_details"
             android:textColor="@android:color/white"
-            android:textSize="27sp" />
+            android:textSize="23sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="354dp"
-        android:layout_below="@id/toolbar"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="-4dp"
-        android:background="@color/colorBackground"
-        android:elevation="4dp"
-        android:padding="16dp"
-        android:scaleType="centerCrop" />
-
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_below="@id/toolbar"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
+        android:background="@color/colorBackground"
+
+        android:layout_marginBottom="30dp"
         android:padding="16dp">
 
         <LinearLayout
@@ -68,19 +58,49 @@
             android:orientation="vertical"
             android:paddingBottom="16dp">
 
-            <TextView
-                android:id="@+id/descPhoto"
+         ImageView
+            android:id="@+id/imageView"
+            android:layout_width="415dp"
+            android:layout_height="384dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="-4dp"
+            android:background="@color/colorBackground"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp"
+            android:scaleType="centerCrop" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:padding="8dp"
-                android:text="DESCRIÇÃO"
-                android:textStyle="bold"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="17sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/descPhoto"
+                    android:layout_width="284dp"
+                    android:paddingTop="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="12dp"
+                    android:text="DESCRIÇÃO"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/button_background"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorOnPrimary"
+                    android:text="SALVAR" />
+
+            </LinearLayout>
 
             <EditText
-                android:id="@+id/descriptionTextView"
+                android:id="@+id/descriptionEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_background"
@@ -90,24 +110,36 @@
                 android:inputType="textMultiLine"
                 android:minLines="3"
                 android:maxLines="5"
+                android:visibility="gone"
+                android:enabled="false"
                 android:layout_marginBottom="16dp" />
+
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="20dp"
+                android:text="Description"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp"
-                android:padding="8dp">
+                android:orientation="horizontal">
+
 
                 <TextView
                     android:id="@+id/photoCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CATEGORIA"
+                    android:text="CATEGORIA:"
                     android:textStyle="bold"
-                    android:background="@color/colorBackground"
                     android:textColor="@color/colorTextPrimary"
-
                     android:padding="12dp"
                     android:textSize="17sp" />
 
@@ -116,55 +148,66 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorBackground"
                     android:padding="12dp"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="18sp" />
-
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/photoLoc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:padding="8dp"
-                android:text="LOCALIZAÇÃO"
-                android:textStyle="bold"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="17sp" />
 
-            <TextView
-                android:id="@+id/locationTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@color/colorBackground"
-                android:padding="12dp"
-                android:text="Latitude, Longitude"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/photoHour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:padding="8dp"
-                android:text="DATA E HORA"
-                android:textStyle="bold"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="17sp" />
+                <TextView
+                    android:id="@+id/photoLoc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOCALIZAÇÃO:"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTextPrimary"
+                    android:padding="12dp"
+                    android:textSize="17sp"  />
 
-            <TextView
-                android:id="@+id/timestampTextView"
+                <TextView
+                    android:id="@+id/locationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="12dp"
+                    android:text="Latitude, Longitude"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="18sp" />
+        </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorBackground"
-                android:padding="12dp"
-                android:text="Data e Hora"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="18sp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+
+                <TextView
+                    android:id="@+id/photoHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DATA E HORA:"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTextPrimary"
+                    android:padding="12dp"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/timestampTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="12dp"
+                    android:text="Data e Hora"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
