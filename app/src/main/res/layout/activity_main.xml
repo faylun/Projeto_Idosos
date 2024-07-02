@@ -30,22 +30,29 @@
         android:clipToPadding="false" />
 
     <!-- Botão para capturar foto -->
+
+    <!-- Texto de álbum vazio -->
+
     <Button
         android:id="@+id/btnCapture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CAPTURAR FOTO"
-        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:textSize="18sp"
-        android:minHeight="48dp"
-        android:minWidth="120dp"
-        android:paddingVertical="12dp"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="-8dp"
+        android:layout_marginBottom="9dp"
         android:backgroundTint="@color/colorBrown"
-        android:textColor="@android:color/white" />
+        android:minWidth="120dp"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        android:text="CAPTURAR FOTO"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <!-- Texto de álbum vazio -->
     <TextView
         android:id="@+id/emptyAlbumTextView"
         android:layout_width="wrap_content"
