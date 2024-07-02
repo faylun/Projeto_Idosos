@@ -58,7 +58,7 @@
             android:orientation="vertical"
             android:paddingBottom="16dp">
 
-         ImageView
+        <ImageView
             android:id="@+id/imageView"
             android:layout_width="415dp"
             android:layout_height="384dp"
